@@ -15,8 +15,8 @@ document = Document()
 
 document.add_heading('Resident Information', 0)
 
-p = document.add_paragraph('A list of all the information regarding the residents of 4E.')
-# p.add_run('bold').bold = True
+p = document.add_paragraph('A list of all the information on ')
+p.add_run('residents of 4E.').bold = True
 # p.add_run(' and some ')
 # p.add_run('italic.').italic = True
 
@@ -30,16 +30,19 @@ document.add_heading('Table of Content', level=1)
 #     'first item in ordered list', style='List Number'
 # )
 
-table = document.add_table(rows=1, cols=3)
+table = document.add_table(rows=1, cols=4)
+table.style = 'Table Grid'
 hdr_cells = table.rows[0].cells
-hdr_cells[0].text = 'Index'
-hdr_cells[1].text = 'Name'
-hdr_cells[2].text = 'Bedspace'
+hdr_cells[0].paragraphs[0].add_run('Index').bold = True
+hdr_cells[1].paragraphs[0].add_run('Name').bold = True
+hdr_cells[2].paragraphs[0].add_run('Email').bold = True
+hdr_cells[3].paragraphs[0].add_run('Bedspace').bold = True
 for index, row in df.iterrows():
     row_cells = table.add_row().cells
     row_cells[0].text = str(index)
     row_cells[1].text = str(row.Name)
-    row_cells[2].text = str(row.Bedspace)
+    row_cells[2].text = str(row.Email)
+    row_cells[3].text = str(row.Bedspace)
 
 document.add_page_break()
 
