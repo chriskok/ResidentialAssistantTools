@@ -8,7 +8,6 @@ sheet = 0
 df = pd.read_excel(io=file_name, sheet_name=sheet)
 cols = [3, 6, 8]
 df.drop(df.columns[cols],axis=1,inplace=True)
-# print(df.head(5))  # print first 5 rows of the dataframe
 
 # WRITE TO WORD
 document = Document()
@@ -22,13 +21,8 @@ p.add_run('residents of 4E.').bold = True
 
 document.add_heading('Table of Content', level=1)
 # document.add_paragraph('Intense quote', style='Intense Quote')
-
-# document.add_paragraph(
-#     'first item in unordered list', style='List Bullet'
-# )
-# document.add_paragraph(
-#     'first item in ordered list', style='List Number'
-# )
+# document.add_paragraph('first item in unordered list', style='List Bullet')
+# document.add_paragraph('first item in ordered list', style='List Number')
 
 table = document.add_table(rows=1, cols=4)
 table.style = 'Table Grid'
